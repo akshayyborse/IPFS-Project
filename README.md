@@ -1,180 +1,133 @@
-# Decentralized File Storage System
+# 📦 Decentralized File Storage System
 
-A decentralized file storage system built with Next.js, Solidity, and IPFS. This project allows users to store files securely on the blockchain with IPFS integration.
+A secure and decentralized file storage system built with **Next.js**, **Solidity**, and **IPFS**. This project allows users to upload and store files on IPFS with blockchain-based metadata management and token-based payments.
 
-## Features
+---
 
-- File upload and storage on IPFS
-- Smart contract-based storage management
-- Token-based payment system
-- File access control and permissions
-- Real-time file status updates
-- Responsive and modern UI
+## 🚀 Features
 
-## Technology Stack
+- 📁 Upload & store files on IPFS
+- 🔐 Access control & permissions via smart contracts
+- 💰 Token-based payment system (MockToken)
+- 🧠 Real-time file metadata and status updates
+- 💡 Clean and responsive UI
+- 🛠 Built on Sepolia testnet
 
-- **Frontend**: Next.js, React, TailwindCSS
-- **Blockchain**: Solidity, Hardhat, Ethers.js
-- **Storage**: IPFS
-- **Network**: Sepolia Testnet
-- **Payment**: ERC20 Token (MockToken for testing)
+---
 
-## Project Structure
+## 🧱 Tech Stack
+
+- **Frontend**: Next.js, React, Tailwind CSS  
+- **Smart Contracts**: Solidity, Hardhat, Ethers.js  
+- **Storage**: IPFS  
+- **Blockchain Network**: Sepolia Testnet  
+- **Payments**: ERC20 Mock Token  
+
+---
+
+## 📂 Project Structure
 
 ```
 ├── contracts/
-│   ├── FileStorage.sol
-│   └── MockToken.sol
+│   ├── FileStorage.sol          # Manages file storage & payments
+│   └── MockToken.sol            # ERC20 token for test payments
 ├── scripts/
-│   └── deploy.js
+│   └── deploy.js                # Deployment script
 ├── src/
 │   ├── app/
-│   │   ├── dashboard/
-│   │   └── upload/
+│   │   ├── dashboard/           # User file dashboard
+│   │   └── upload/              # Upload interface
 │   ├── components/
-│   │   ├── FileUpload.tsx
-│   │   └── FileList.tsx
+│   │   ├── FileUpload.tsx       # Upload logic and UI
+│   │   └── FileList.tsx         # Display stored files
 │   ├── contracts/
-│   │   └── FileStorage.json
+│   │   └── FileStorage.json     # ABI for smart contract
 │   └── hooks/
-│       ├── useWeb3.ts
-│       └── useContract.ts
+│       ├── useWeb3.ts           # Web3 connection
+│       └── useContract.ts       # Contract interactions
 ├── .env
 ├── .env.local
 ├── hardhat.config.js
 └── package.json
 ```
 
-## Smart Contracts
+---
 
-### FileStorage.sol
-- Manages file storage and access control
-- Handles payment processing
-- Integrates with IPFS for file storage
-- Provides file metadata management
+## ⚙️ Setup Instructions
 
-### MockToken.sol
-- ERC20 token for testing payments
-- Used for storage cost calculations
-- Supports token transfers and approvals
-
-## Frontend Components
-
-### FileUpload.tsx
-- Handles file selection and upload
-- Manages upload progress and status
-- Integrates with IPFS for file storage
-- Handles payment processing
-
-### FileList.tsx
-- Displays user's stored files
-- Shows file metadata and status
-- Provides file access controls
-- Supports file deletion
-
-## Setup Instructions
-
-1. Clone the repository:
+### 1. Clone the repository
 ```bash
-git clone <repository-url>
-cd <project-directory>
+git clone https://github.com/akshayyborse/IPFS-Project.git
+cd IPFS-Project
 ```
 
-2. Install dependencies:
+### 2. Install dependencies
 ```bash
 npm install
 ```
 
-3. Configure environment variables:
-Create `.env` file:
+### 3. Configure environment variables
+
+Create a `.env` file:
 ```
 SEPOLIA_RPC_URL=your_sepolia_rpc_url
 PRIVATE_KEY=your_wallet_private_key
 ETHERSCAN_API_KEY=your_etherscan_api_key
 ```
 
-Create `.env.local` file:
+Create a `.env.local` file:
 ```
 NEXT_PUBLIC_CONTRACT_ADDRESS=your_deployed_contract_address
 ```
 
-4. Deploy smart contracts:
+### 4. Deploy smart contracts to Sepolia
 ```bash
 npx hardhat run scripts/deploy.js --network sepolia
 ```
 
-5. Start the development server:
+### 5. Start the development server
 ```bash
 npm run dev
 ```
 
-## File Storage Details
+---
 
-### Storage Process
-1. File is uploaded to IPFS
-2. IPFS hash is stored on the blockchain
-3. File metadata is recorded in the smart contract
-4. Payment is processed for storage duration
+## 📡 How Storage Works
 
-### Storage Locations
-- **IPFS**: Primary file storage
-- **Blockchain**: File metadata and access control
-- **Smart Contract**: File ownership and permissions
+### Upload Flow
 
-### File Retrieval
-1. Get file hash from smart contract
-2. Access file through IPFS gateway
-3. Verify file ownership and permissions
-4. Download or view file content
+1. User selects a file via UI  
+2. File is uploaded to IPFS  
+3. IPFS hash and metadata stored on the blockchain  
+4. Payment is processed via MockToken  
 
-### Redundancy
-- Files are stored on multiple IPFS nodes
-- Blockchain provides immutable record
-- Smart contract ensures access control
+### File Access
 
-## Viewing Files with IPFS Desktop
+- Use IPFS CID from smart contract  
+- View via public IPFS gateways or IPFS Desktop  
+- Access permissions enforced via smart contract  
 
-1. **Install IPFS Desktop**
-   - Download from [IPFS Desktop](https://github.com/ipfs/ipfs-desktop/releases)
-   - Install and launch the application
+---
 
-2. **Connect to Files**
-   - Open IPFS Desktop
-   - Click "Import" button
-   - Enter the IPFS hash (CID) from your dashboard
-   - Click "Import"
+## 🖥️ IPFS Desktop (Optional Viewing)
 
-3. **Access Files**
-   - Files will appear in your IPFS Desktop
-   - Right-click for options:
-     - Share
-     - Copy path
-     - Download
-     - Pin/Unpin
+1. **Download** from [IPFS Desktop](https://github.com/ipfs/ipfs-desktop/releases)  
+2. **Import File** using IPFS CID  
+3. **Access**: Download, Pin, or Share files  
 
-4. **Sharing Files**
-   - Copy IPFS path
-   - Share with others
-   - Generate shareable links
+---
 
-5. **Managing Files**
-   - Pin files for persistence
-   - View file details
-   - Monitor file status
+## 🤝 Contributing
 
-6. **Troubleshooting**
-   - Check IPFS Desktop connection
-   - Verify hash is correct
-   - Ensure file is pinned
+1. Fork this repository  
+2. Create a new branch: `git checkout -b feature-name`  
+3. Commit changes: `git commit -m "Added feature"`  
+4. Push: `git push origin feature-name`  
+5. Open a Pull Request 🚀
 
-## Contributing
+---
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
+## 📝 License
 
-## License
+This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
 
-This project is licensed under the MIT License - see the LICENSE file for details.
